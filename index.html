@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro & Ana - Nosso Casamento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f8f8;
+            scroll-behavior: smooth;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://cdn-gdkad.nitrocdn.com/QCqkYjxGONZrCXIXfXBENdbBxbScoNSv/assets/images/optimized/rev-2e06a64/foliagefriend.com/wp-content/uploads/2023/04/Olive-Branch-Flowers-1-1024x683.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .custom-divider {
+            height: 4px;
+            background: linear-gradient(90deg, #5E6623, #D4D994, #5E6623);
+        }
+        
+        .photo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .photo-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .message-card {
+            background: linear-gradient(135deg, #f8f8f8, #f0f5e8);
+            border-left: 4px solid #5E6623;
+        }
+        
+        .countdown-item {
+            background-color: #893941;
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #CB7885;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active::after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background-color: #5E6623;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #4a501c;
+        }
+        
+        .btn-secondary {
+            background-color: #CB7885;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #b86a77;
+        }
+        
+        .text-primary {
+            color: #5E6623;
+        }
+        
+        .text-secondary {
+            color: #893941;
+        }
+        
+        .bg-primary {
+            background-color: #5E6623;
+        }
+        
+        .bg-secondary {
+            background-color: #893941;
+        }
+        
+        .bg-accent {
+            background-color: #D4D994;
+        }
+        
+        .bg-soft {
+            background-color: #f0f5e8;
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .location-icon {
+            background-color: #5E6623;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-secondary text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold title-font">
+                    <span class="text-accent">P</span>&<span class="text-white">A</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active">Início</a>
+                    <a href="#story" class="nav-link">Nossa História</a>
+                    <a href="#location" class="nav-link">Localização</a>
+                    <a href="#gallery" class="nav-link">Fotos</a>
+                    <a href="#messages" class="nav-link">Mensagens</a>
+                </div>
+                <button class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section min-h-screen flex items-center justify-center text-white relative">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="container mx-auto px-6 z-10 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold title-font mb-4">Pedro & Ana</h1>
+            <div class="custom-divider w-32 mx-auto my-6"></div>
+            <p class="text-xl md:text-2xl mb-8">Estamos nos casando!</p>
+            <p class="text-lg mb-12">09 de Maio de 2025 • 20h</p>
+            
+            <div class="flex justify-center space-x-4 mb-12">
+                <div class="countdown-item px-4 py-2">
+                    <div class="text-3xl font-bold" id="days">00</div>
+                    <div class="text-sm">Dias</div>
+                </div>
+                <div class="countdown-item px-4 py-2">
+                    <div class="text-3xl font-bold" id="hours">00</div>
+                    <div class="text-sm">Horas</div>
+                </div>
+                <div class="countdown-item px-4 py-2">
+                    <div class="text-3xl font-bold" id="minutes">00</div>
+                    <div class="text-sm">Minutos</div>
+                </div>
+                <div class="countdown-item px-4 py-2">
+                    <div class="text-3xl font-bold" id="seconds">00</div>
+                    <div class="text-sm">Segundos</div>
+                </div>
+            </div>
+            
+            <a href="#story" class="inline-block btn-primary text-white px-8 py-3 rounded-full">
+                Conheça nossa história
+            </a>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="py-20 bg-soft">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold title-font text-center mb-16 text-primary">Nossa História</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-12">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-accent p-3 rounded-full mr-4">
+                            <i class="fas fa-heart text-secondary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold title-font text-secondary mb-2">O Primeiro Encontro</h3>
+                            <p class="text-gray-700">Tudo começou em uma cafeteria no centro da cidade. Pedro estava lendo seu livro favorito quando Ana, distraída com seu telefone, derrubou acidentalmente o café dele. O constrangimento inicial rapidamente se transformou em risadas e uma conversa que durou horas. Naquele dia, ambos sabiam que algo especial havia começado.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-12">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-accent p-3 rounded-full mr-4">
+                            <i class="fas fa-umbrella-beach text-secondary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold title-font text-secondary mb-2">Primeira Viagem Juntos</h3>
+                            <p class="text-gray-700">Seis meses depois, decidiram viajar para a praia. Foi quando Pedro percebeu que não conseguia imaginar sua vida sem Ana. As noites à beira-mar, as caminhadas na areia e os planos que faziam para o futuro só confirmavam o que ambos sentiam - estavam destinados a ficar juntos.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-12">
+                    <div class="flex items-start mb-6">
+                        <div class="bg-accent p-3 rounded-full mr-4">
+                            <i class="fas fa-gem text-secondary text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold title-font text-secondary mb-2">O Pedido</h3>
+                            <p class="text-gray-700">No aniversário de 3 anos de relacionamento, Pedro levou Ana para o mesmo café onde se conheceram. Lá, diante de todos os clientes (que ele havia combinado previamente), ajoelhou-se e pediu Ana em casamento. As lágrimas de felicidade e o "sim" dela ecoaram pelo local, marcando o início de uma nova jornada.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold title-font text-center mb-16 text-primary">Localização</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <div class="location-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold title-font text-secondary mb-2">Jantar Íntimo</h3>
+                    <p class="text-lg text-gray-700 mb-4">Casa dos Pais da Noiva</p>
+                    <p class="text-gray-600">Av. Hilton Massa, 79 - Passagem</p>
+                    <p class="text-gray-600">Cabo Frio - RJ</p>
+                    <p class="text-gray-600">09 de Maio de 2025 às 20h</p>
+                </div>
+                
+                <div class="map-container mb-8">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2305.7740142045213!2d-42.01058471978848!3d-22.87576122865898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9704bad87eaad7%3A0x8bcad3de9acc07ae!2sAv.%20Hilton%20Massa%2C%2069%20-%20Centro%2C%20Cabo%20Frio%20-%20RJ%2C%2028906-030!5e1!3m2!1spt-BR!2sbr!4v1745533721129!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                
+                <div class="text-center">
+                    <a href="https://maps.app.goo.gl/e4bp1BzAcny5WRAA9" target="_blank" class="inline-block btn-primary text-white px-6 py-3 rounded-full">
+                        <i class="fas fa-directions mr-2"></i> Ver rotas no Google Maps
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold title-font text-center mb-16 text-primary">Nossos Momentos</h2>
+            
+            <div class="photo-gallery">
+                <!-- Photo 1 -->
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Casal na praia" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Photo 2 -->
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Casal abraçado" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Photo 3 -->
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Casal sorrindo" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Photo 4 -->
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1529333164850-9a07f4f8d1a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Casal no pôr do sol" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Photo 5 -->
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1530968464165-985829c15b96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1476&q=80" alt="Casal na montanha" class="w-full h-full object-cover">
+                </div>
+                
+                <!-- Photo 6 -->
+                <div class="photo-item">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0732a5620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Noivado" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Messages Section -->
+    <section id="messages" class="py-20 bg-soft">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold title-font text-center mb-16 text-primary">Mensagens dos Convidados</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- Message Form -->
+                <div class="bg-white p-6 rounded-lg shadow-md mb-12">
+                    <h3 class="text-xl font-bold title-font text-secondary mb-4">Deixe sua mensagem</h3>
+                    <form id="messageForm" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2">Seu Nome</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Sua Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                        </div>
+                        <button type="submit" class="btn-secondary text-white px-6 py-2 rounded-md">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+                <!-- Messages List -->
+                <div id="messagesContainer" class="space-y-6">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="text-3xl font-bold title-font mb-2">
+                        <span class="text-accent">P</span>&<span class="text-white">A</span>
+                    </div>
+                    <p class="text-gray-300">09 de Maio de 2025 • 20h</p>
+                </div>
+                
+                <div class="flex space-x-6 mb-6 md:mb-0">
+                    <a href="#" class="text-gray-300 hover:text-accent transition duration-300">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-accent transition duration-300">
+                        <i class="fab fa-facebook text-2xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-accent transition duration-300">
+                        <i class="fab fa-whatsapp text-2xl"></i>
+                    </a>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p class="text-gray-300">Com amor, Pedro & Ana</p>
+                    <p class="text-sm text-gray-400 mt-1">© 2024 Todos os direitos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('May 9, 2025 20:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+            document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0'); // Corrigido aqui
+            document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Highlight active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Handle message form submission
+        document.getElementById('messageForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const messageText = document.getElementById('message').value.trim();
+            
+            if (name && messageText) {
+                const messagesContainer = document.getElementById('messagesContainer');
+                const now = new Date();
+                const dateString = now.toLocaleDateString('pt-BR');
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message-card p-6 rounded-lg';
+                messageDiv.innerHTML = `
+                    <div class="flex items-center mb-3">
+                        <div class="bg-secondary text-white rounded-full w-10 h-10 flex items-center justify-center mr-3">
+                            ${name.charAt(0).toUpperCase()}
+                        </div>
+                        <h4 class="font-bold">${name}</h4>
+                    </div>
+                    <p class="text-gray-700">${messageText}</p>
+                    <p class="text-sm text-gray-500 mt-2">Enviado em ${dateString}</p>
+                `;
+                
+                messagesContainer.prepend(messageDiv);
+                
+                // Clear form
+                document.getElementById('name').value = '';
+                document.getElementById('message').value = '';
+                
+                // Show success message
+                alert('Mensagem enviada com sucesso! Obrigado por suas palavras carinhosas.');
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        });
+        
+        // Mobile menu toggle (would need more implementation for full functionality)
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=Kynoa/pedroeana" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
+</html>
